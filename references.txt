@@ -1,0 +1,14 @@
+Book:
+https://www.safaribooksonline.com/library/view/clojure-programming/9781449310387/ch01.html
+
+Web-site:
+https://clojure.org/about/rationale
+
+Manual:
+https://clojure.github.io/clojure/
+
+Forum:
+https://www.reddit.com/r/Clojure/
+
+Major Project:
+http://blog.cognitect.com/blog/2015/6/30/walmart-runs-clojure-at-scale
