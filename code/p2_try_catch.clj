@@ -3,6 +3,6 @@
   (catch ArithmeticException e
     (.getMessage e))
   (finally
-    (println "cleanup")))
+    (println "this will always print")))
 
 
