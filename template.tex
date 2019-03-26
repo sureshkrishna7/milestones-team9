@@ -1,0 +1,202 @@
+\documentclass{article}
+
+
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography\usepackage{lipsum}
+\usepackage{listings}
+
+\title{Clojure: A \emph{Common Sense} language }
+
+
+\author{
+  Suresh Krishna Devendran\\
+  Department of Computer Science\\
+  University of Arizona\\
+  Tucson, AZ 85719 \\
+  \texttt{sureshdevendran@email.arizona.edu} \\
+  %% examples of more authors
+   \And
+ Zach Keane\\
+  Department of Computer Science\\
+  University of Arizona\\
+  Tucson, AZ 85719\\
+  \texttt{ztkeane@email.arizona.edu} \\
+  %% \AND
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Clojure is a relatively new functional programming language that works with the established JVM platform. It offers many of the same control structures we're used to: such as switch/case statements, loops, try/catch blocks, and if-statements. The data structures are also standard: nil corresponds to null, Numbers, Strings, Characters, Keywords, Symbols, and Collections.
+\end{abstract}
+
+\section{Introduction}
+Clojure is a functional programming language that uses the Lisp dialect, matching closely with other functional languages such as Scheme. An advantage it has over other programming languages is that it works with the established JVM platform, which is used in many industries and is very portable. Clojure is not only powerful, but easy to use, offering features such as dynamic data structures for new programmers.
+
+
+\section{History}
+Clojure is a language designed by an individual named Rich Hickey, that was created in 2007. Its current status is alive, with the most recent update being applied on December 7th, 2018 . Clojure was created in order to provide a lisp, a family of languages using the Scheme/Haskell parentheses format, that’s also compatible with the Java Virtual Machine. Clojure also is designed with concurrency in mind, and with all of these desires from Rich Hickey, he couldn’t find a language that suited him. Therefore, Clojure was born .
+
+\section{Control Structures}
+Control Structures in Clojure; if statements, case switches, loops and exceptions.
+\subsection{Conditional Statements}
+Basic layout for a standard if-statement will have the format of (if (condition) trueCondition falseCondition), as shown below. Another format is the if-elif-else format as seen in the "Subprograms" example below, where we define (empty? x), (== (mod (first x) 2) 0), and finally :else to be our conditions. The argument after these conditions will be what is returned.
+\begin{lstlisting}
+(defn isThisZero? [number]
+     (if (= number 0) "yes" "no"))
+\end{lstlisting}
+
+\subsection{Case Switches}
+Cases are handled in the following format. Based on what is passed in to x, we will either return "One case!" if we give 1, "Two cases!" if we give 2, or "I can't hold that many cases!" if we pass in anything else. This case statement is identical to a switch statement in other languages, but will run only once.
+\begin{lstlisting}
+(defn myCase [x]
+         (case x
+           1 "One case!"
+           2 "Two cases!"
+           "I can't hold that many cases!"))
+\end{lstlisting}
+
+\subsection{Loops}
+There are many, many ways to accomplish looping in Clojure, but this is the most basic example. "dotimes" is a built-in function that takes in an iterator, i, and a range, in this case hard-coded as 10. If we run the program, we will print the integers 0 through 9, one per line.
+\begin{lstlisting}
+(dotimes [i 10]
+   (println i))
+\end{lstlisting}
+
+\subsection{Exceptions}
+Try/catch blocks are very basic, and look like how they work in Java. The code below shows us trying to divide by 0, and it being caught and printed using the Java syntax. Finally blocks are included, and will always run.
+\begin{lstlisting}
+(try
+  (/ 2 0)
+  (catch ArithmeticException e
+    (.getMessage e))
+  (finally
+    (println "this will always print")))
+\end{lstlisting}
+
+
+\section{Data Types}
+\subsection{Integers}
+\begin{itemize}
+\item Decimal Integers (Short, Long, Int) - These are used to represent whole numbers. For example, 345.
+\item Octal Numbers - These are used to represent numbers in octal representation. For example, 015.
+\item Hexadecimal Numbers - These are used to represent numbers in representation. For example, 0xff.
+\item Radix Numbers - These are used to represent numbers in radix representation. For example, 2r1111 where the radix is an integer between 2 and 36, inclusive.
+\end{itemize}
+
+\subsection{Floating Point}
+\begin{itemize}
+\item The default is used to represent 32-bit floating point numbers. For example, 13.56.
+\item There is also the scientific representation. For example, 1.24e-13.
+\end{itemize}
+
+\subsection{Char}
+A single character literal. Characters are defined with the backslash symbol. For example, \textbackslash a.
+
+\subsection{Boolean}
+A boolean value, true or false.
+
+\subsection{String}
+Text literals which are represented as a chain of characters "Hello"
+
+\subsection{Nil}
+To represent NULL in clojure.
+
+\subsection{Atom}
+Atoms provide a way to manage shared, synchronous, independent state. They are reference type like refs and vars.
+
+
+\section{Subprograms}
+\subsection{Checking for even}
+\begin{lstlisting}
+(defn hasEven [x]
+
+    (cond
+      (empty? x) false
+      (== (mod (first x) 2) 0) true
+      :else (hasEven (rest x))
+    )
+)
+\end{lstlisting}
+
+\subsection{Return a list with the Odd digit values}
+\begin{lstlisting}
+(defn retOdd [x]
+   (cond
+      (empty? x) []
+      (empty? (rest x)) x
+      :else (cons (first x) (retOdd (rest (rest x))))
+   )
+)
+\end{lstlisting}
+
+\subsection{Return the list of consecutive sums}
+\begin{lstlisting}
+(defn consSumHelp [a x]
+   (cond
+      (empty? x) []
+      :else (cons (+ a (first x)) (consSumHelp (+ a (first x)) (rest x)))
+   )
+)
+
+(defn consSum [x]
+    (consSumHelp 0 x))
+\end{lstlisting}
+
+\section{Summary}
+Clojure is a really fun languge. It works with the well established JVM platform. Clojure was primarily designed with concurrency in mind. Clojure is a functional programming language that uses the Lisp dialect. Hence it is used in many platforms and it is very portable. The workflow using REPL is phenomenal, hence Clojure is a very competitive and compelling language to program in.
+
+
+
+\bibliographystyle{unsrt}  
+%\bibliography{references}  %%% Remove comment to use the external .bib file (using bibtex).
+%%% and comment out the ``thebibliography'' section.
+
+
+%%% Comment out this section when you \bibliography{references} is enabled.
+\begin{thebibliography}{1}
+
+\bibitem{Book}
+\newblock Clojure-programming. (n.d.). 
+\newblock Retrieved from \\ https://www.safaribooksonline.com/library/view/clojure-programming/9781449310387/ch01.html.
+
+\bibitem{Web-site}
+\newblock Rationale. (n.d.). Retrieved from https://clojure.org/about/rationale
+
+
+\bibitem{Manual}
+\newblock Clojure Core API Reference. (n.d.). Retrieved from  https://clojure.github.io/clojure/
+
+\bibitem{Forum}
+\newblock R/Clojure. (n.d.). Retrieved from https://www.reddit.com/r/Clojure/
+
+\bibitem{Major Project}
+\newblock Phillips, M. (2015, July 14). Walmart Runs Clojure at Scale. Retrieved from \\ http://blog.cognitect.com/blog/2015/6/30/walmart-runs-clojure-at-scale
+
+\end{thebibliography}
+
+\end{document}
+

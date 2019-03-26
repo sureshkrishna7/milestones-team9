@@ -14,3 +14,10 @@ p2_try_catch.clj - Shows a try/catch exception through dividing by 0.
 p2_case.clj - Shows a switch statement in clojure. Type in either (myCase x) with x = 1, 2, or anything else to get different message.
 
 p2_if.clj - Shows a demonstration of an if-statement. Type in (isThisZero? x) which will tell you if x is zero.
+
+
+template.tex
+Link to edit file: https://www.overleaf.com/2692621113hwdthfschmzy
+Link to view file: https://www.overleaf.com/read/bbfjknkvszzh
+
+
