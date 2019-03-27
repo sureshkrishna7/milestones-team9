@@ -101,32 +101,32 @@ Try/catch blocks are very basic, and look like how they work in Java. The code b
 \section{Data Types}
 \subsection{Integers}
 \begin{itemize}
-\item Decimal Integers (Short, Long, Int) - These are used to represent whole numbers. For example, 345.
+\item Decimal Integers (Short, Long, Int) - These are used to represent whole numbers. For example, 36.
 \item Octal Numbers - These are used to represent numbers in octal representation. For example, 015.
-\item Hexadecimal Numbers - These are used to represent numbers in representation. For example, 0xff.
-\item Radix Numbers - These are used to represent numbers in radix representation. For example, 2r1111 where the radix is an integer between 2 and 36, inclusive.
+\item Hexadecimal Numbers - These are used to represent numbers in representation. For example, 0xabc.
+\item Radix Numbers - These are used to represent numbers in radix representation. Given a Radix Number 8r32, the "8" indicates that the number in base 8, and what follows after the "r" is the value. In this case, 8r32 == 26.
 \end{itemize}
 
 \subsection{Floating Point}
 \begin{itemize}
-\item The default is used to represent 32-bit floating point numbers. For example, 13.56.
-\item There is also the scientific representation. For example, 1.24e-13.
+\item The default floating point number is 32 bits and represents some decimal value. For example, 5.54.
+\item You can also define floats in scientific notation. For example, 6.02e-23.
 \end{itemize}
 
 \subsection{Char}
-A single character literal. Characters are defined with the backslash symbol. For example, \textbackslash a.
+A single character literal. Characters are defined by being preceded with a backslash. For example, \textbackslash a.
 
 \subsection{Boolean}
-A boolean value, true or false.
+A boolean value, either true or false.
 
 \subsection{String}
-Text literals which are represented as a chain of characters "Hello"
+Text represented as a chain of Chars, such as "Hello"
 
 \subsection{Nil}
-To represent NULL in clojure.
+To represent null in clojure.
 
 \subsection{Atom}
-Atoms provide a way to manage shared, synchronous, independent state. They are reference type like refs and vars.
+Atoms provide a way to manage shared, synchronous, independent state. Meant to store primitive values that can only be changed through functions.
 
 
 \section{Subprograms}
